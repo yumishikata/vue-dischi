@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Dischi</title>
+</head>
+<body>
+    <div id="root" class="container">
+        <header>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg" alt="">
+        </header>
+        <nav>
+            <label for="genere">Filtra per genere</label>
+            <select name="genere" id="genere" @change="changeGenre($event)">
+                <option value="All">All</option>
+                <option v-for="genere in generi" :value="genere">{{genere}}</option>
+            </select>
+        </nav>
+        <main>
+            <ul class="canzoni">
+                <li v-for="canzone in arrayCanzoni" v-if="selectedGenre== 'All' || canzone.genre == selectedGenre">
+                    <img :src="canzone.poster" alt="">
+                    <h2>{{canzone.title.toUpperCase()}}</h2>
+                    <p>{{canzone.author}}</p>
+                    <p>{{canzone.year}}</p>
+                </li>
+            </ul>
+        </main>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>
