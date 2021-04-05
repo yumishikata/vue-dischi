@@ -8,6 +8,11 @@ var app = new Vue ({
     methods: {
         changeGenre: function(event) {
             this.selectedGenre = event.target.value;
+        },
+        yearSort: function() {
+            this.arrayCanzoni.sort(function(a, b){
+                return a.year-b.year;
+            })
         }
     },
     mounted() {

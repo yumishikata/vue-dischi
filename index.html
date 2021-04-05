@@ -22,6 +22,7 @@
                 <option value="All">All</option>
                 <option v-for="genere in generi" :value="genere">{{genere}}</option>
             </select>
+            <button @click="yearSort()">Ordine cronologico</button>
         </nav>
         <main>
             <ul class="canzoni">
